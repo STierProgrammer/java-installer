@@ -25,6 +25,8 @@ pub fn set_environment_variables(java_home: &Path) -> Result<()> {
 
             unsafe {
                 use winapi::um::winuser::SendMessageTimeoutW;
+                use winapi::um::winuser::{HWND_BROADCAST, SMTO_ABORTIFHUNG, WM_SETTINGCHANGE};
+
                 SendMessageTimeoutW(
                     HWND_BROADCAST,
                     WM_SETTINGCHANGE,
